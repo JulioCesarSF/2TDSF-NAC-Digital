@@ -1,0 +1,74 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+
+<h:head></h:head> 
+<h:body>
+	<ui:composition template="_template.xhtml">
+		<ui:define name="conteudo">
+			<div class="container">
+				<h:form>
+					<h2>CADASTRAR JOGO</h2>
+					<div class="form-group">
+						<h:outputLabel value="Titulo do jogo" for="titulo" />
+						<h:inputText value="#{jogoBean.jogo.titulo}" id="titulo"
+							class="form-control" />
+					</div>
+			<!-- 	<div class="form-group">
+				<h:outputLabel value="Data de Lançamento" for="data" />
+				<h:inputText id="data" styleClass="form-control"
+					value="#{buscaJogoBean.jogo.dataLancamento.time}" >
+					<f:convertDateTime pattern="dd/MM/yyyy"/>
+				</h:inputText>
+			</div>-->
+					<div class="form-group">
+						<h:outputLabel value="Genero do jogo" for="genero" />
+						<h:inputText value="#{jogoBean.jogo.genero}" id="genero"
+							class="form-control" />
+					</div>
+					<div class="form-group">
+						<h:outputLabel value="Descricao do jogo" for="descricao" />
+						<h:inputText value="#{jogoBean.jogo.descricao}" id="descricao"
+							class="form-control" />
+					</div>
+						<div class="form-group">
+					<h:commandButton styleClass="btn btn-primary" 
+						action="#{jogoBean.cadastrar()}" value="Cadastrar"
+						 style="color:#fff; background-color:black"  />
+					</div>
+					
+					<div class="row">
+			<div class="col-md-6">
+				<h1>Buscar o Jogo</h1>
+				<h:form>
+					<div class="form-group">
+						<h:outputLabel value="Codigo" for="codigo" />
+						<h:inputText styleClass="form-control"
+							value="#{buscaJogoBean.codigo}" id="codigo" />
+					</div>
+					<div class="form-group">
+						<h:commandButton styleClass="btn btn-primary"
+							action="#{buscaJogoBean.buscar()}" value="Buscar"
+							 style="color:#fff; background-color:black" />
+					</div>
+				</h:form>
+			</div>
+			<div class="col-md-6">
+				<h2>Lista</h2>
+				<h:outputText value="#{buscaJogoBean.jogo.titulo}" />
+				<br />
+				<h:outputText value="#{buscaJogoBean.jogo.dataLancamento}" />
+				<br />
+				<h:outputText value="#{buscaJogoBean.jogo.genero}" />
+				<br />
+				<h:outputText value="#{buscaJogoBean.jogo.descricao}" />
+			</div>
+		</div>
+				</h:form>
+			</div>
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>
