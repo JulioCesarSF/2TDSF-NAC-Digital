@@ -1,6 +1,5 @@
 package br.com.fiap.managedbeans;
 
-import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,7 +8,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 
-import br.com.fiap.repository.JogoRepositorySOAP;
+import br.com.fiap.repository.JogoRepositoryREST;
 import br.com.fiap.to.Jogo;
 
 @ManagedBean
@@ -17,7 +16,7 @@ import br.com.fiap.to.Jogo;
 public class JogoMB {
 	private Jogo jogo;
 	private List<Jogo> jogos;
-	private JogoRepositorySOAP rep = new JogoRepositorySOAP();
+	private JogoRepositoryREST rep = new JogoRepositoryREST();
 	private String idPesquisado;
 	
 	@PostConstruct
@@ -51,7 +50,7 @@ public class JogoMB {
 				this.jogos = new ArrayList<>();
 				this.jogos.add(jogo);
 			}
-		} catch (RemoteException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
@@ -66,7 +65,7 @@ public class JogoMB {
 				//alterar
 			}
 			
-		} catch (RemoteException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
@@ -81,7 +80,7 @@ public class JogoMB {
 		if(this.jogos == null){
 			try {
 				jogos = rep.listar();
-			} catch (RemoteException e) {
+			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		}

@@ -34,7 +34,7 @@ private EntityManagerFactory fabrica;
 		fabrica = EntityManagerFactorySingleton.getInst();
 	}
 	
-	//rest/compra/{id} GET
+	//rest/jogo/{id} GET
 	@GET
 	@Path("/{codigo}")
 	@Produces(MediaType.APPLICATION_JSON)	
@@ -46,7 +46,7 @@ private EntityManagerFactory fabrica;
 		return jogo;
 	}
 	
-	//rest/compra GET
+	//rest/jogo GET
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<Jogo> listar(){
@@ -57,7 +57,7 @@ private EntityManagerFactory fabrica;
 		return lista;
 	}
 	
-	//rest/compra/{codigo} PUT
+	//rest/jogo/{codigo} PUT
 	@PUT
 	@Path("/{id}")
 	@Consumes(MediaType.APPLICATION_JSON)
@@ -77,7 +77,7 @@ private EntityManagerFactory fabrica;
 		return Response.ok().build();
 	}
 	
-	//rest/compra/{codigo} DELETE
+	//rest/jogo/{codigo} DELETE
 	@DELETE
 	@Path("/{id}")
 	public void delete(@PathParam("id") int codigo){
@@ -93,7 +93,7 @@ private EntityManagerFactory fabrica;
 		}
 	}
 	
-	//rest/compra POST
+	//rest/jogo POST
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON) //Recebe JSON
 	public Response cadastrar(Jogo jogo, 
