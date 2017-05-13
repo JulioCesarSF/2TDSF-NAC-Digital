@@ -38,7 +38,7 @@ private EntityManagerFactory fabrica;
 	@GET
 	@Path("/{codigo}")
 	@Produces(MediaType.APPLICATION_JSON)	
-	public Jogo buscar(@PathParam("codigo") int id){
+	public Jogo buscar(@PathParam("codigo") long id){
 		EntityManager em = fabrica.createEntityManager();
 		JogoDAO dao = new JogoDAOImpl(em);
 		Jogo jogo = dao.buscar(id);
@@ -62,7 +62,7 @@ private EntityManagerFactory fabrica;
 	@Path("/{id}")
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response atualizar(Jogo jogo, 
-								@PathParam("id") int codigo){
+								@PathParam("id") long codigo){
 		EntityManager em = fabrica.createEntityManager();
 		JogoDAO dao = new JogoDAOImpl(em);
 		jogo.setId(codigo);
@@ -80,7 +80,7 @@ private EntityManagerFactory fabrica;
 	//rest/jogo/{codigo} DELETE
 	@DELETE
 	@Path("/{id}")
-	public void delete(@PathParam("id") int codigo){
+	public void delete(@PathParam("id") long codigo){
 		EntityManager em = fabrica.createEntityManager();
 		JogoDAO dao = new JogoDAOImpl(em);
 		try{

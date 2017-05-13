@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="_template.xhtml">
+	<ui:define name="content">
+	    <div class="container">
+	    	<h1>Cadastro de Jogos</h1>
+	    	<div class="row">
+	    		<div class="col-md-12">
+	    			<h:form>
+	    				<h:inputHidden value="#{jogoMB.jogo.id}"/>
+	    			
+						<div class="form-group">
+							<h:outputLabel value="Título" />
+							<h:inputText value="#{jogoMB.jogo.titulo}" styleClass="form-control"/>
+						</div>
+						<div class="form-group">
+							<h:outputLabel value="Descrição" />
+							<h:inputText value="#{jogoMB.jogo.descricao}" styleClass="form-control"/>
+						</div>
+						<div class="form-group">
+							<h:outputLabel value="Gênero" />
+							<h:inputText value="#{jogoMB.jogo.genero}" styleClass="form-control"/>
+						</div>
+						<div class="form-group">
+							<h:outputLabel value="Data de Lançamento" /><br/>	
+							<p:calendar id="inline" value="#{jogoMB.jogo.dataLancamento}" mode="inline" locale="pt" pattern="dd/MM/yyyy" navigator="true">
+								<f:converter converterId="dateToCalendarConverter" />
+							</p:calendar>
+						</div>
+						<h:commandButton action="#{jogoMB.cadastrar()}" value="Cadastrar" styleClass="btn btn-primary"/>
+					</h:form>
+	    		</div>
+	    	</div>
+	    </div>
+	</ui:define>
+</ui:composition>
+</html>

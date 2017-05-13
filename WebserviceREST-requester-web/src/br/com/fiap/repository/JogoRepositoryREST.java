@@ -28,7 +28,7 @@ public class JogoRepositoryREST {
 		throw new Exception("Erro " + response.getStatus());
 	}
 	
-	public Jogo buscar(int codigo) throws Exception{
+	public Jogo buscar(long codigo) throws Exception{
 		Client client = Client.create();
 		WebResource resouce = client.resource(URLBASE+"/jogo/"+codigo);
 		
@@ -63,7 +63,7 @@ public class JogoRepositoryREST {
 		}
 	}
 	
-	public void remover(int codigo) throws Exception{
+	public void remover(long codigo) throws Exception{
 		Client client = Client.create();
 		WebResource resouce = client.resource(URLBASE+"/jogo/"+codigo);
 		

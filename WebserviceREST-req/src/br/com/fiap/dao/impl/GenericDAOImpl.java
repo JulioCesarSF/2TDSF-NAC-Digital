@@ -32,7 +32,7 @@ public class GenericDAOImpl<T, K> implements GenericDAO<T, K> {
 	}
 
 	@Override
-	public void excluir(int id) throws CodigoInvalidoException {
+	public void excluir(long id) throws CodigoInvalidoException {
 		T entity = buscar(id);
 		if (entity == null) {
 			throw new CodigoInvalidoException("Código inválido");
@@ -41,7 +41,7 @@ public class GenericDAOImpl<T, K> implements GenericDAO<T, K> {
 	}
 
 	@Override
-	public T buscar(int id) {
+	public T buscar(long id) {
 		return em.find(clazz, id);
 	}
 

@@ -46,7 +46,7 @@ public class JogoMB {
 			if(this.idPesquisado == null || this.idPesquisado.equals("")){
 				jogos = rep.listar();
 			}else{
-				Jogo jogo = rep.buscar(Integer.parseInt(this.idPesquisado));
+				Jogo jogo = rep.buscar(Long.parseLong(this.idPesquisado));
 				this.jogos = new ArrayList<>();
 				this.jogos.add(jogo);
 			}
@@ -61,8 +61,7 @@ public class JogoMB {
 				rep.cadastrar(this.jogo);
 				this.jogo = new Jogo();
 			}else{
-				System.out.println("alterar"); 
-				//alterar
+				rep.alterar(this.jogo);
 			}
 			
 		} catch (Exception e) {

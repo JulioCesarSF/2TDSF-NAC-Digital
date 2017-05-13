@@ -1,0 +1,65 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<ui:composition template="_template.xhtml">
+	<ui:define name="content">
+		<div class="container">
+	    	<h1>Listagem</h1>
+	    	
+	    	<div class="row">
+	    		<div class="col-md-12">
+	    			<h:form class="form-inline" prependId="false">
+					  <h:inputText styleClass="form-control" id="idPesquisado" value="#{jogoMB.idPesquisado}" placeholder="Digite um ID"/>
+				
+					  	<f:ajax 
+					  		event="click"
+					  		execute="@form"
+					  		listener="#{jogoMB.buscar()}"
+					  		render="tabela">
+					  		
+							<h:commandButton class="btn btn-primary" value="Buscar"/>	  		
+					  	</f:ajax>
+					</h:form>
+	    		
+	    			<h:dataTable styleClass="table" value="#{jogoMB.jogos}" var="jogo" id="tabela">
+	    				<h:column>
+	    					<f:facet name="header">ID</f:facet>
+	    					#{jogo.id}
+	    				</h:column>
+	    				<h:column>
+	    					<f:facet name="header">Título</f:facet>
+	    					#{jogo.titulo}
+	    				</h:column>
+	    				<h:column>
+	    					<f:facet name="header">Data de Lançamento</f:facet>
+	    					<h:outputText value="#{jogo.dataLancamento.time}">
+								<f:convertDateTime pattern="dd/MM/yyyy" />
+							</h:outputText>
+	    				</h:column>
+	    				<h:column>
+	    					<f:facet name="header">Gênero</f:facet>
+	    					#{jogo.genero}
+	    				</h:column>
+	    				<h:column>
+	    					<f:facet name="header">Descrição</f:facet>
+	    					#{jogo.descricao}
+	    				</h:column>
+	    				<h:column>
+	    					<f:facet name="header">Opções</f:facet>
+	    					<h:form>
+		    					<h:commandLink styleClass="btn btn-danger" action="#{jogoMB.excluir(jogo.id)}" value="Excluir"/>
+		    					<h:commandLink styleClass="btn btn-success" action="#{jogoMB.editar(jogo.id)}"  value="Editar"/>
+	    					</h:form>
+	    				</h:column>
+	    			</h:dataTable>
+	    		</div>
+	    	</div>
+	    </div>
+	</ui:define>
+</ui:composition>
+</html>

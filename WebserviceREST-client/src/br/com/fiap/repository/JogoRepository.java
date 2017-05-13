@@ -16,7 +16,7 @@ public class JogoRepository {
 
 	private Client client = Client.create();
 
-	private final String URL = "http://localhost:8080/WebserviceREST-server/rest/jogo/";
+	private final String URL = "http://localhost:8080/WebserviceREST-req/rest/jogo/";
 
 	public void cadastrar(JogoTO jogo) throws WebServiceException {
 		WebResource resource = client.resource(URL);
